@@ -12,6 +12,7 @@ public abstract class PageGenerator {
         "<nav>\n" +
         "<a href=\"/\">Home</a>\n" +
         "<a href=\"/account\">잔액 조회</a>\n" +
+        "<a href=\"/transfer\">계좌 이체</a>\n" +
         "</nav>" +
         content() +
         "</body>\n" +
