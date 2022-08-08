@@ -13,6 +13,6 @@ public class AccountPageGenerator extends PageGenerator {
   @Override
   public String content() {
     return "<p>계좌 번호: " + account.identifier() + "</p>\n" +
-        "<p>잔액: " + account.amount() + "원</p>";
+        "<p>잔액: " + account.amount() + "원</p>\n";
   }
 }
