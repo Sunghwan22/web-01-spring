@@ -22,4 +22,13 @@ public class Account {
   public long amount() {
     return amount;
   }
+
+  public void transfer(Account receiver, long amount) {
+    if (amount <= 0) {
+      return;
+    }
+
+    this.amount -= amount;
+    receiver.amount += amount;
+  }
 }
