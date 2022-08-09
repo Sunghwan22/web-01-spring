@@ -28,11 +28,11 @@ class PostControllerTest {
   void post() throws Exception {
     mockMvc.perform(MockMvcRequestBuilders.post("/post")
             .param("title", "나란 페페")
-            .param("writer", "페페")
+            .param("author", "페페")
             .param("content", "나란 페페는 누구?"))
         .andExpect(status().isOk())
         .andExpect(content().string(
-            containsString("등록하기")
+            containsString("글 등록이 완료 되었습니다")
         ));
 
     mockMvc.perform(MockMvcRequestBuilders.get("/posts"))
