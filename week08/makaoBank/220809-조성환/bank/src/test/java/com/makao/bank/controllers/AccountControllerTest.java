@@ -1,6 +1,7 @@
 package com.makao.bank.controllers;
 
 import com.makao.bank.repositories.AccountRepository;
+import com.makao.bank.services.AccountService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
@@ -16,6 +17,9 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 class AccountControllerTest {
   @Autowired
   private MockMvc mockMvc;
+
+  @SpyBean
+  private AccountService accountService;
 
   @SpyBean
   private AccountRepository accountRepository;
