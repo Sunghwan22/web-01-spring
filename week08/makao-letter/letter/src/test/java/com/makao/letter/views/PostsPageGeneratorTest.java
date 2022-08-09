@@ -2,6 +2,7 @@ package com.makao.letter.views;
 
 import com.makao.letter.models.Post;
 import com.makao.letter.repositories.PostRepository;
+import com.makao.letter.services.PostService;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -22,18 +23,18 @@ class PostsPageGeneratorTest {
   }
 
   @Test
-  void postList() {
+  void List() {
     PostRepository postRepository = new PostRepository();
 
-    PageGenerator pageGenerator = new PostsPageGenerator(postRepository);
+    PostService postService = new PostService(postRepository);
 
-    String html = pageGenerator.content();
+    PostsPageGenerator postsPageGenerator = new PostsPageGenerator(postRepository);
 
-    Post post = new Post("제목","글쓴이","내용");
+    postService.addPost("제목","글쓴이","내용");
 
-    postRepository.posts().put(post.author(), post);
+    String html = postsPageGenerator.postList(postRepository.posts());
 
-    assertThat(html).contains("글쓴이");
     assertThat(html).contains("제목");
+    assertThat(html).contains("글쓴이");
   }
 }

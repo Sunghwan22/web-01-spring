@@ -15,6 +15,6 @@ public class PostService {
   public void addPost(String title, String author, String content) {
     Post post = new Post(title,author,content);
 
-    postRepository.posts().put(author,post);
+    postRepository.posts().put(post.registrationNumber(),post);
   }
 }

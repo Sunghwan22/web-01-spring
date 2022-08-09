@@ -3,18 +3,26 @@ package com.makao.letter.repositories;
 import com.makao.letter.models.Post;
 import org.springframework.stereotype.Repository;
 
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.stream.Stream;
 
 @Repository
 public class PostRepository {
-  private Map<String, Post> posts = new HashMap<>();
+  private Map<Integer, Post> posts = new LinkedHashMap<>();
 
-  public Map<String,Post> posts() {
+  public PostRepository() {
+    Stream.of(
+        new Post("제목","내용","글쓴이")
+    ).forEach(post -> posts.put(999, post));
+
+  }
+
+  public Map<Integer,Post> posts() {
     return posts;
   }
-// todo find기능 구현해야함
-//  public Post find() {
-//    return
-//  }
+
+  public Post find(int registrationNumber) {
+    return posts.get(registrationNumber);
+  }
 }

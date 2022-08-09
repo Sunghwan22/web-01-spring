@@ -1,8 +1,11 @@
 package com.makao.letter.contollers;
 
+import com.makao.letter.repositories.PostRepository;
+import com.makao.letter.services.PostService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.mock.mockito.SpyBean;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
@@ -14,6 +17,12 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 class PostControllerTest {
   @Autowired
   private MockMvc mockMvc;
+
+  @SpyBean
+  private PostService postService;
+
+  @SpyBean
+  private PostRepository postRepository;
 
   @Test
   void postPage() throws Exception {

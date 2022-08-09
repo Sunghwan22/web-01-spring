@@ -2,8 +2,10 @@ package com.makao.letter.contollers;
 
 import com.makao.letter.repositories.PostRepository;
 import com.makao.letter.views.PageGenerator;
+import com.makao.letter.views.PostDetailPageGenerator;
 import com.makao.letter.views.PostsPageGenerator;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -17,6 +19,14 @@ public class PostsController {
   @GetMapping("/posts")
   public String postsPage() {
     PageGenerator pageGenerator = new PostsPageGenerator(postRepository);
+    return pageGenerator.html();
+  }
+
+  @GetMapping("/posts/:{id}" )
+  public String postDetailPage(
+      @PathVariable("id") int id
+  ) {
+    PageGenerator pageGenerator = new PostDetailPageGenerator(postRepository,id);
     return pageGenerator.html();
   }
 }

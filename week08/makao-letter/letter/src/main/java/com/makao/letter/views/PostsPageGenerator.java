@@ -24,10 +24,12 @@ public class PostsPageGenerator extends PageGenerator {
             "</ul>";
   }
 
-  private String postList(Map<String, Post> posts) {
+  public String postList(Map<Integer, Post> posts) {
     String list = "";
     for(Post post : posts.values()) {
-      list += "<li><a href=\"/\">" + post.author() + "by" + post.title() +"</a></li>";
+      list += "<li><a href=\"/posts/:" + post.registrationNumber() + "\">"
+          + post.author() +
+          "by" + post.title() +"</a></li>";
     }
     return list;
   }
