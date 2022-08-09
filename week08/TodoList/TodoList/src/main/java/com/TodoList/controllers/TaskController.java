@@ -1,5 +1,6 @@
 package com.TodoList.controllers;
 
+import com.TodoList.models.Task;
 import com.TodoList.services.TaskService;
 import com.TodoList.views.PageGenerator;
 import com.TodoList.views.TasksPageGenerator;
@@ -7,6 +8,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 @RestController
 public class TaskController {
@@ -26,9 +29,9 @@ public class TaskController {
   public String addTask(
       @RequestParam("content") String content
   ) {
-    taskService.addTask(content);
+    List<Task> tasks = taskService.addTask(content);
 
-    PageGenerator pageGenerator = new TasksPageGenerator();
+    PageGenerator pageGenerator = new TasksPageGenerator(tasks);
     return pageGenerator.html();
   }
 }

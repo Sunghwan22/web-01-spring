@@ -17,8 +17,7 @@ public class TaskService {
   public List<Task> addTask(String content) {
     Task task = new Task(content);
 
-    taskRepository.tasks().add(task);
-
+    taskRepository.add(task);
     return taskRepository.tasks();
   }
 }

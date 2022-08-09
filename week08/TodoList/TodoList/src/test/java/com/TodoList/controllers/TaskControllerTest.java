@@ -35,7 +35,7 @@ class TaskControllerTest {
 
   @Test
   void tasks() throws Exception {
-    mockMvc.perform(MockMvcRequestBuilders.get("/tasks")
+    mockMvc.perform(MockMvcRequestBuilders.post("/tasks")
             .param("content", "스프링 공부하기"))
         .andExpect(status().isOk())
         .andExpect(content().string(

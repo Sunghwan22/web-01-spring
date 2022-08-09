@@ -14,10 +14,14 @@ public class TaskRepository {
   private List<Task> tasks = new ArrayList<>();
 
   public List<Task> tasks() {
-    return tasks;
+    return new ArrayList<>(tasks);
   }
 
   public int tasksCount() {
     return tasks.size();
+  }
+
+  public void add(Task task) {
+    tasks.add(task);
   }
 }

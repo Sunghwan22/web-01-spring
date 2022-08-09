@@ -12,8 +12,23 @@ class TaskRepositoryTest {
 
     Task task = new Task("햄버거 먹고싶다");
 
-    taskRepository.tasks().add(task);
+    taskRepository.add(task);
 
     assertThat(taskRepository.tasksCount()).isEqualTo(1);
+  }
+
+  @Test
+  void tasksCount() {
+    TaskRepository taskRepository = new TaskRepository();
+
+    Task task = new Task("삘레 걷기");
+
+    int oldTaskCount = taskRepository.tasksCount();
+
+    taskRepository.add(task);
+
+    int newTaskCount = taskRepository.tasksCount();
+
+    assertThat(newTaskCount - oldTaskCount).isEqualTo(1);
   }
 }

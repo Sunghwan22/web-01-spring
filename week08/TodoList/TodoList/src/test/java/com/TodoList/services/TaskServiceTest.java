@@ -13,9 +13,7 @@ class TaskServiceTest {
 
     TaskService taskService = new TaskService(taskRepository);
 
-    Task task = new Task("배고프다");
-
-    taskService.addTask(task);
+    taskService.addTask("저녁 먹기");
 
     assertThat(taskRepository.tasksCount()).isEqualTo(1);
   }

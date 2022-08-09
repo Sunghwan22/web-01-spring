@@ -1,12 +1,21 @@
 package com.TodoList.views;
 
 import com.TodoList.models.Task;
-import com.TodoList.repositories.TaskRepository;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class TasksPageGenerator extends PageGenerator {
+  private List<Task> tasks;
+
+  public TasksPageGenerator(List<Task> tasks) {
+    this.tasks = tasks;
+  }
+
+  public TasksPageGenerator() {
+    tasks = new ArrayList<>();
+  }
 
   @Override
   public String content() {
@@ -21,7 +30,7 @@ public class TasksPageGenerator extends PageGenerator {
         "</ul>";
   }
 
-  private String taskList(List<Task> tasks) {
+  private String taskList() {
     return tasks.stream()
         .map(task -> "<li>" + task.content() + "</li>\n")
         .collect(Collectors.joining());
